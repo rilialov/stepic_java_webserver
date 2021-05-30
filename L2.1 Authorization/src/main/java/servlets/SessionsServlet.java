@@ -45,7 +45,7 @@ public class SessionsServlet extends HttpServlet {
     public void doPost(HttpServletRequest request,
                        HttpServletResponse response) throws ServletException, IOException {
         String login = request.getParameter("login");
-        String pass = request.getParameter("pass");
+        String pass = request.getParameter("password");
 
         if (login == null || pass == null) {
             response.setContentType("text/html;charset=utf-8");
@@ -61,8 +61,7 @@ public class SessionsServlet extends HttpServlet {
         }
 
         accountService.addSession(request.getSession().getId(), profile);
-        Gson gson = new Gson();
-        String json = gson.toJson(profile);
+        String json = "Authorized: " + login;
         response.setContentType("text/html;charset=utf-8");
         response.getWriter().println(json);
         response.setStatus(HttpServletResponse.SC_OK);
