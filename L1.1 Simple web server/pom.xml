@@ -13,7 +13,6 @@
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
-
     <build>
         <plugins>
             <plugin>
@@ -23,34 +22,18 @@
             </plugin>
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
-
                 <configuration>
+                    <finalName>server</finalName>
+                    <archive>
+                        <manifest>
+                            <mainClass>main.Main</mainClass>
+                        </manifest>
+                    </archive>
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
+                    <appendAssemblyId>false</appendAssemblyId>
                     <outputDirectory>${basedir}</outputDirectory>
-                    <finalName>server</finalName>
-                    <appendAssemblyId>false</appendAssemblyId>
-                    <archive>
-                        <manifest>
-                            <mainClass>main.Main</mainClass>
-                        </manifest>
-                    </archive>
-                </configuration>
-            </plugin>
-            <plugin>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <configuration>
-                    <finalName>server</finalName>
-                    <archive>
-                        <manifest>
-                            <mainClass>main.Main</mainClass>
-                        </manifest>
-                    </archive>
-                    <descriptorRefs>
-                        <descriptorRef>jar-with-dependencies</descriptorRef>
-                    </descriptorRefs>
-                    <appendAssemblyId>false</appendAssemblyId>
                 </configuration>
             </plugin>
         </plugins>
@@ -74,7 +57,5 @@
             <artifactId>jetty-webapp</artifactId>
             <version>9.3.0.M0</version>
         </dependency>
-
     </dependencies>
-
 </project>
